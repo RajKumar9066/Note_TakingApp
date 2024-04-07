@@ -1,13 +1,19 @@
 const addBtn = document.querySelector("#addBtn")
 const main = document.querySelector("#main")
 
+addBtn.addEventListener("click",
+    function(){
+        addNote()
+    }
+)
+
 const savenote = () =>{
     const notes = document.querySelectorAll(".note textarea");
     console.log(notes);
     const data = [];
     notes.forEach(
         (note) =>{
-            data.push(note)
+            data.push(note.value)
         }
     )
     if(data.length === 0){
@@ -16,12 +22,6 @@ const savenote = () =>{
         localStorage.setItem("notes",JSON.stringify(data))
     }
 }
-
-addBtn.addEventListener("click",
-    function(){
-        addNote()
-    }
-); 
 
 const addNote = (text = "") =>{
     const note = document.createElement("div");
